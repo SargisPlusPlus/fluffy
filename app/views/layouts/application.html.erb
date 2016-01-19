@@ -5,13 +5,23 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 
 </head>
 <body>
 
-<%= yield %>
+  <%# <% flash.each do |key, value| %1> %>
+  <%#   <p id='<%= key %1>'><%= value %1></p> %>
+  <%# <% end %1> %>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <% if user_signed_in? %>
+    <p>Hello, <%= current_user.first_name %> - <%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %></p>
+    <br>
+  <% end %>
+
+  <%= yield %>
 
 </body>
 </html>

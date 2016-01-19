@@ -1,6 +1,6 @@
-class CreateProfesssions < ActiveRecord::Migration
+class CreateProfessions < ActiveRecord::Migration
   def change
-    create_table :professsions do |t|
+    create_table :professions do |t|
       t.references :user, index: true, foreign_key: true
 
       t.text :summary

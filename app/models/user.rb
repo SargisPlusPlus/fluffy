@@ -3,10 +3,13 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_one :profession
+
   has_one :about
   has_one :contact_info
-  has_one :video
+  has_one :post
+  has_one :profession
   has_many :offers
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 end

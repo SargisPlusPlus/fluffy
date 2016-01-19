@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160117073607) do
+ActiveRecord::Schema.define(version: 20160119012513) do
 
   create_table "abouts", force: :cascade do |t|
     t.integer  "user_id"
@@ -33,9 +33,6 @@ ActiveRecord::Schema.define(version: 20160117073607) do
 
   create_table "contact_infos", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
     t.string   "phone"
     t.string   "website"
     t.string   "location"
@@ -90,7 +87,18 @@ ActiveRecord::Schema.define(version: 20160117073607) do
   add_index "offers", ["employer_id"], name: "index_offers_on_employer_id"
   add_index "offers", ["user_id"], name: "index_offers_on_user_id"
 
-  create_table "professsions", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "category"
+    t.string   "picture_url"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "professions", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "summary"
     t.text     "education"
@@ -100,7 +108,7 @@ ActiveRecord::Schema.define(version: 20160117073607) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "professsions", ["user_id"], name: "index_professsions_on_user_id"
+  add_index "professions", ["user_id"], name: "index_professions_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -113,9 +121,8 @@ ActiveRecord::Schema.define(version: 20160117073607) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "title"
-    t.string   "category"
-    t.string   "picture_url"
+    t.string   "first_name"
+    t.string   "last_name"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
@@ -124,11 +131,11 @@ ActiveRecord::Schema.define(version: 20160117073607) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "videos", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "videos", ["user_id"], name: "index_videos_on_user_id"
+  add_index "videos", ["post_id"], name: "index_videos_on_post_id"
 
 end
