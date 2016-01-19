@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @post.user %>
+  <strong>Posts:</strong>
+  <%= @post.title %>
+  <%= @post.category %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
