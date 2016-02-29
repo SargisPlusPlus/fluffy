@@ -33,6 +33,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+# gem "paperclip", "~> 4.3"
+# gem "paperclip-ffmpeg", "~> 1.0.1"
+gem 'puma'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -48,3 +51,6 @@ group :development do
   gem 'spring'
 end
 
+group :production do
+  gem "pg"
+end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160119035648) do
+ActiveRecord::Schema.define(version: 20160124041130) do
 
   create_table "abouts", force: :cascade do |t|
     t.integer  "user_id"
@@ -92,8 +92,12 @@ ActiveRecord::Schema.define(version: 20160119035648) do
     t.string   "title"
     t.string   "category"
     t.string   "picture_url"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "video_file_name"
+    t.string   "video_content_type"
+    t.integer  "video_file_size"
+    t.datetime "video_updated_at"
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"

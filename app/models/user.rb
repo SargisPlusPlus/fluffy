@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_one :about
   has_one :contact_info
-  has_one :post
+  has_one :video
   has_one :profession
   has_many :offers
 
